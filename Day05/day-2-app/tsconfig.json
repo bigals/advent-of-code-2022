@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "baseUrl": "../day-5-app",
+    "types": ["webpack-env"],
+    "paths": {
+      "@/*": ["../day-5-app/src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": [
+    "../day-5-app/src/**/*.ts",
+    "../day-5-app/src/**/*.tsx",
+    "../day-5-app/src/**/*.vue",
+    "../day-5-app/tests/**/*.ts",
+    "../day-5-app/tests/**/*.tsx"
+  ],
+  "exclude": ["../day-5-app/node_modules"]
+}

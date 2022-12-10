@@ -4,7 +4,10 @@
     <p>{{ solution1 }}</p>
 
     <h1 v-if="solution2">Answer 2</h1>
-    <p>{{ solution2 }}</p>
+
+    <div class="pretty-grid">
+      <p v-for="(line, index) in solution2" :key="index">{{ line }}</p>
+    </div>
   </div>
 </template>
 
@@ -35,5 +38,12 @@ export default defineComponent({
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.pretty-grid {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 </style>

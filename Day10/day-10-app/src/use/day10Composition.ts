@@ -71,16 +71,13 @@ export default function day10Composition() {
       : ".";
   };
 
-  const prettyPrintCRT = (crt: string[][]) => {
-    let returnStr = "";
-    for (const row of crt) {
-      for (const col of row) {
-        returnStr += col;
-      }
-      returnStr += "</br>";
-    }
+  const processCycle = (cycle: number, xReg: number, crt: string[][]) => {
+    const { row, col } = getCRTCoords(cycle);
+    crt[row][col] = getCRTChar(cycle, xReg);
 
-    return returnStr;
+    cycle++;
+
+    return cycle;
   };
 
   const day10SecondSolution = () => {
@@ -99,20 +96,10 @@ export default function day10Composition() {
       const [cmd, regChange] = instruction.split(" ");
 
       if (cmd === "noop") {
-        const { row, col } = getCRTCoords(cycle);
-        crt[row][col] = getCRTChar(cycle, xReg);
-
-        cycle++;
+        cycle = processCycle(cycle, xReg, crt);
       } else {
-        const { row, col } = getCRTCoords(cycle);
-        crt[row][col] = getCRTChar(cycle, xReg);
-
-        cycle++;
-
-        const { row: row2, col: col2 } = getCRTCoords(cycle);
-        crt[row2][col2] = getCRTChar(cycle, xReg);
-
-        cycle++;
+        cycle = processCycle(cycle, xReg, crt);
+        cycle = processCycle(cycle, xReg, crt);
         xReg += parseInt(regChange, 10);
       }
     }

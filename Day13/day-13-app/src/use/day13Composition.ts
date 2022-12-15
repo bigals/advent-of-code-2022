@@ -18,7 +18,7 @@ export default function day13Composition() {
     return pairs;
   };
 
-  const ensureArray = (toCheck: number | number[]): number[] =>
+  const toArray = (toCheck: number | number[]): number[] =>
     Array.isArray(toCheck) ? toCheck : [toCheck];
 
   const compareSides = (left: any, right: any): number => {
@@ -27,8 +27,8 @@ export default function day13Composition() {
     else if (typeof left === "number" && typeof right === "number")
       return left - right;
 
-    left = ensureArray(left);
-    right = ensureArray(right);
+    left = toArray(left);
+    right = toArray(right);
 
     const longArray = left.length > right.length ? left : right;
 
@@ -63,11 +63,14 @@ export default function day13Composition() {
   };
 
   const day13SecondSolution = () => {
-    const decoders = [[[2]], [[6]]];
-    const packets = part2Parse(inputData).concat(decoders).sort(compareSides);
+    const seperators = [[[2]], [[6]]];
+    const allPairsSorted = part2Parse(inputData)
+      .concat(seperators)
+      .sort(compareSides);
 
     return (
-      (packets.indexOf(decoders[0]) + 1) * (packets.indexOf(decoders[1]) + 1)
+      (allPairsSorted.indexOf(seperators[0]) + 1) *
+      (allPairsSorted.indexOf(seperators[1]) + 1)
     );
   };
 

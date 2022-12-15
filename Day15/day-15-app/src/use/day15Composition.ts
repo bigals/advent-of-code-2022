@@ -5,12 +5,12 @@ export default function day15Composition() {
 
   const day15FirstSolution = () => {
     /* First Problem Solution goes here */
-    return '';
+    return "";
   };
 
   const day15SecondSolution = () => {
     /* Second Problem Solution goes here */
-    return '';
+    return "";
   };
 
   return { day15FirstSolution, day15SecondSolution };
